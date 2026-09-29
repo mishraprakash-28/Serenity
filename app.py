@@ -1,3 +1,288 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Serenify - Mental Well-Being Platform</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f4f8f8;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Navbar */
+        header {
+            background-color: #2c5e55;
+            color: white;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        header h1 {
+            font-size: 1.5rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 1.5rem;
+            font-weight: 500;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #e0f2f1, #b2dfdb);
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .hero h2 {
+            font-size: 2.5rem;
+            color: #1b4d3e;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto 1.5rem auto;
+            color: #444;
+        }
+
+        .btn {
+            background-color: #2c5e55;
+            color: white;
+            padding: 0.7rem 1.5rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            text-decoration: none;
+        }
+
+        .btn:hover {
+            background-color: #1e403a;
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 1100px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        section {
+            background: white;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        section h2 {
+            color: #2c5e55;
+            margin-bottom: 1rem;
+            border-bottom: 2px solid #e0f2f1;
+            padding-bottom: 0.5rem;
+        }
+
+        /* Card Grid */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .card {
+            border: 1px solid #e0e0e0;
+            border-radius: 6px;
+            padding: 1.5rem;
+            background-color: #fafafa;
+        }
+
+        .card h3 {
+            color: #1b4d3e;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Search Input */
+        .search-box {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 1rem;
+            font-size: 1rem;
+        }
+
+        /* Helpline Alert */
+        .helpline-box {
+            background-color: #ffebee;
+            border-left: 5px solid #e53935;
+            padding: 1rem;
+            margin-top: 1rem;
+            border-radius: 4px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 1.5rem;
+            background-color: #2c5e55;
+            color: white;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header / Navigation -->
+    <header>
+        <h1>Serenify</h1>
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#info">Information</a>
+            <a href="#directory">Find Support</a>
+            <a href="#music">Calming Music</a>
+            <a href="#helpline">Helplines</a>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <div class="hero" id="home">
+        <h2>A Safe Space for Your Mental Well-Being</h2>
+        <p>Simple, reliable information and accessible mental health support resources whenever you need them.</p>
+        <a href="#directory" class="btn">Find Professional Help</a>
+    </div>
+
+    <div class="container">
+
+        <!-- Mental Health Information Section -->
+        <section id="info">
+            <h2>Mental Health Information</h2>
+            <p>Understand your emotional well-being with basic, verified information.</p>
+            <div class="grid">
+                <div class="card">
+                    <h3>Understanding Stress</h3>
+                    <p>Stress is a normal body reaction to challenges. Learn healthy ways to manage day-to-day pressure.</p>
+                </div>
+                <div class="card">
+                    <h3>Managing Anxiety</h3>
+                    <p>Anxiety involves feeling fearful or nervous. Deep breathing and grounding exercises can help.</p>
+                </div>
+                <div class="card">
+                    <h3>Overcoming Loneliness</h3>
+                    <p>Feeling disconnected is common. Building small daily social routines can improve your mood.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Find a Professional Section -->
+        <section id="directory">
+            <h2>Find Support</h2>
+            <p>Search verified counselors, psychologists, and health clinics.</p>
+            <input type="text" id="searchInput" class="search-box" placeholder="Search by city or specialty (e.g., Counselor, Delhi)..." onkeyup="filterDirectory()">
+            
+            <div class="grid" id="directoryGrid">
+                <div class="card professional-card">
+                    <h3>Dr. Ananya Sharma</h3>
+                    <p><strong>Role:</strong> Clinical Psychologist</p>
+                    <p><strong>Location:</strong> Delhi / Online</p>
+                    <p><strong>Focus:</strong> Anxiety, Stress Management</p>
+                </div>
+                <div class="card professional-card">
+                    <h3>Counselor Rahul Verma</h3>
+                    <p><strong>Role:</strong> Student Counselor</p>
+                    <p><strong>Location:</strong> Mumbai / Online</p>
+                    <p><strong>Focus:</strong> Academic Stress, Career Guidance</p>
+                </div>
+                <div class="card professional-card">
+                    <h3>Serene Mind Clinic</h3>
+                    <p><strong>Role:</strong> Wellness Center</p>
+                    <p><strong>Location:</strong> Ahmedabad</p>
+                    <p><strong>Focus:</strong> General Counseling & Therapy</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Calming Music / Audio Section -->
+        <section id="music">
+            <h2>Calming Activities & Audio</h2>
+            <p>Listen to relaxing sounds to soothe your mind during stressful moments.</p>
+            <div class="grid">
+                <div class="card">
+                    <h3>Ocean Waves</h3>
+                    <audio controls style="width: 100%; margin-top: 10px;">
+                        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+                        Your browser does not support the audio element.
+                    </audio>
+                </div>
+                <div class="card">
+                    <h3>Rainfall Sound</h3>
+                    <audio controls style="width: 100%; margin-top: 10px;">
+                        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3" type="audio/mpeg">
+                        Your browser does not support the audio element.
+                    </audio>
+                </div>
+            </div>
+        </section>
+
+        <!-- Support & Helplines Section -->
+        <section id="helpline">
+            <h2>Emergency Support & Helplines</h2>
+            <p>If you or someone you know needs immediate assistance, please reach out to these resources.</p>
+            <div class="helpline-box">
+                <h3>KIRAN Mental Health Helpline (India)</h3>
+                <p><strong>Toll-Free Number:</strong> 1800-599-0019 (24/7 Available)</p>
+            </div>
+            <div class="helpline-box" style="margin-top: 10px;">
+                <h3>Tele-MANAS</h3>
+                <p><strong>Toll-Free Number:</strong> 14416 or 1800-891-4416</p>
+            </div>
+        </section>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Serenify. Designed for Mental Well-Being Support.</p>
+    </footer>
+
+    <!-- JavaScript Filter Functionality -->
+    <script>
+        function filterDirectory() {
+            let input = document.getElementById('searchInput').value.toLowerCase();
+            let cards = document.getElementsByClassName('professional-card');
+
+            for (let i = 0; i < cards.length; i++) {
+                let cardText = cards[i].innerText.toLowerCase();
+                if (cardText.includes(input)) {
+                    cards[i].style.display = "";
+                } else {
+                    cards[i].style.display = "none";
+                }
+            }
+        }
+    </script>
+</body>
+</html>
+
 import importlib
 
 st = importlib.import_module("streamlit")
