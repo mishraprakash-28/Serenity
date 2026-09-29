@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+"""<!DOCTYPE html>
 <html lang="hi">
 <head>
     <meta charset="UTF-8">
@@ -281,7 +281,7 @@
         }
     </script>
 </body>
-</html>
+</html>"""
 
 import importlib
 
