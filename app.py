@@ -373,7 +373,7 @@ with tab1:
 
                 with st.spinner("SereneBot soch raha hai..."):
                     response = client.models.generate_content(
-                        model="gemini-1.5-flash",
+                        model="gemini-1.5-flash-latest",
                         contents=full_prompt
                     )
                     bot_reply = response.text
