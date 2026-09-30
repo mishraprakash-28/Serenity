@@ -464,3 +464,41 @@ with tab5:
 
 st.sidebar.title("About Serenify")
 st.sidebar.info("Serenify ek educational aur supportive platform hai. Yeh kisi medical diagnosis ya emergency line ka replacement nahi hai.")
+
+import time
+import streamlit as st # pyright: ignore[reportMissingImports]
+
+try:
+    import google.generativeai as genai  # type: ignore
+except ImportError:
+    genai = None
+    st.error("Missing dependency: install 'google-generativeai' using `pip install google-generativeai`.")
+
+
+def generate_response_with_retry(model, prompt, retries=3, delay=2):
+    for attempt in range(retries):
+        try:
+            response = model.generate_content(prompt)
+            return response.text
+        except Exception as e:
+            if type(e).__name__ == "ServiceUnavailable":
+                if attempt < retries - 1:
+                    time.sleep(delay * (2 ** attempt))  # Wait 2s, then 4s, etc.
+                else:
+                    return "Server is temporarily busy. Please try again in a few moments."
+            else:
+                return f"An error occurred: {e}"
+
+
+# Secrets se key load karein (UI par kuch nahi dikhega)
+if genai is not None:
+    try:
+        api_key = st.secrets["GEMINI_API_KEY"]
+        genai.configure(api_key=api_key)
+    except Exception:
+        st.error("API Key secrets me set nahi hai!")
+
+# App UI Header
+st.title("AI Mental Health Companion")
+
+# App ka baki logic yahan aayega...
