@@ -67,7 +67,7 @@ def generate_response_with_resilience(client, full_prompt):
     Handles 503 UNAVAILABLE errors via retries and model fallbacks.
     """
     # Priority list of models to attempt
-    models_to_try = ["gemini-2.5-flash", "gemini-1.5-flash", "gemini-1.5-pro"]
+    models_to_try = ["gemini-3.6-flash", "gemini-1.5-flash", "gemini-1.5-pro"]
     
     for model_name in models_to_try:
         for attempt in range(3):  # Retry up to 3 times per model
